@@ -1,7 +1,7 @@
 # Copyright (c) 2025 CI-Agnostic Pipeline
 # SPDX-License-Identifier: MIT
 
-FROM node:18
+FROM node:20
 
 WORKDIR /app
 

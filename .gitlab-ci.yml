@@ -8,7 +8,7 @@ stages:
 
 setup:
   stage: setup
-  image: node:18
+  image: node:20
   cache:
     paths:
       - node_modules/
@@ -17,18 +17,18 @@ setup:
 
 test:
   stage: test
-  image: node:18
+  image: node:20
   script:
     - ./scripts/ci/test.sh
 
 build:
   stage: build
-  image: node:18
+  image: node:20
   script:
     - ./scripts/ci/build.sh
 
 lint:
   stage: lint
-  image: node:18
+  image: node:20
   script:
     - ./scripts/ci/lint.sh
