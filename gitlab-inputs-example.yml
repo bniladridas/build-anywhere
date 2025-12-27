@@ -5,7 +5,7 @@ spec:
     node_version:
       default: '20'
       description: 'Node.js version to use'
----
+
 stages:
   - setup
   - test
