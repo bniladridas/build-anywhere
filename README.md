@@ -60,19 +60,24 @@ Manual: `pre-commit run --all-files`
 
 Checks commit messages.
 
+### Advanced
+
+For customizable GitLab CI with inputs, see `gitlab-inputs-example.yml`.
+
 ## Files
 
 ```
    🌳 Project Structure
-   ├── 📁 scripts/ci/         # Build scripts
-   │   ├── 🔧 setup.sh        # Setup
-   │   ├── 🧪 test.sh         # Tests
-   │   ├── 🏗️ build.sh        # Build
-   │   └── 🔍 lint.sh         # Lint
-   ├── 📋 Makefile            # Local commands
-   ├── 🚀 .github/workflows/  # GitHub
-   ├── 🔄 .gitlab-ci.yml      # GitLab
-   └── 🔄 .circleci/          # CircleCI
+   ├── 📁 scripts/ci/              # Build scripts
+   │   ├── 🔧 setup.sh             # Setup
+   │   ├── 🧪 test.sh              # Tests
+   │   ├── 🏗️ build.sh             # Build
+   │   └── 🔍 lint.sh              # Lint
+   ├── 📋 Makefile                 # Local commands
+   ├── 🚀 .github/workflows/       # GitHub Actions
+   ├── 🔄 .gitlab-ci.yml           # GitLab CI
+   ├── 🔄 .circleci/               # CircleCI
+   └── 🔄 gitlab-inputs-example.yml # GitLab inputs example
 ```
 
 ## Contribute

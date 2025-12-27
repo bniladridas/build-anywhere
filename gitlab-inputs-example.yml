@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT
+---
+spec:
+  inputs:
+    node_version:
+      default: '20'
+      description: 'Node.js version to use'
+---
+stages:
+  - setup
+  - test
+  - build
+  - lint
+
+setup:
+  stage: setup
+  image: node:$[[ inputs.node_version ]]
+  script:
+    - ./scripts/ci/setup.sh
+
+test:
+  stage: test
+  image: node:$[[ inputs.node_version ]]
+  script:
+    - ./scripts/ci/test.sh
+
+build:
+  stage: build
+  image: node:$[[ inputs.node_version ]]
+  script:
+    - ./scripts/ci/build.sh
+
+lint:
+  stage: lint
+  image: node:$[[ inputs.node_version ]]
+  script:
+    - ./scripts/ci/lint.sh
