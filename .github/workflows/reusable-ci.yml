@@ -1,0 +1,37 @@
+---
+name: Reusable CI
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        default: '18'
+        type: string
+      run-tests:
+        default: true
+        type: boolean
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+
+    - name: Setup
+      run: ./scripts/ci/setup.sh
+
+    - name: Test
+      if: ${{ inputs.run-tests }}
+      run: ./scripts/ci/test.sh
+
+    - name: Build
+      run: ./scripts/ci/build.sh
+
+    - name: Lint
+      run: ./scripts/ci/lint.sh

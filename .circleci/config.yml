@@ -1,0 +1,60 @@
+---
+version: 2.1
+
+workflows:
+  ci:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
+      - build:
+          requires:
+            - setup
+      - lint:
+          requires:
+            - setup
+
+jobs:
+  setup:
+    docker:
+      - image: cimg/node:18
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Setup
+          command: ./scripts/ci/setup.sh
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+  test:
+    docker:
+      - image: cimg/node:18
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: ./scripts/ci/test.sh
+
+  build:
+    docker:
+      - image: cimg/node:18
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: ./scripts/ci/build.sh
+
+  lint:
+    docker:
+      - image: cimg/node:18
+    steps:
+      - checkout
+      - run:
+          name: Lint
+          command: ./scripts/ci/lint.sh

@@ -1,0 +1,10 @@
+# Default owners
+* @harpertoken/maintainers
+
+# CI scripts
+/scripts/ @harpertoken/ci-team
+
+# CI configurations
+/.github/ @harpertoken/devops
+/.gitlab-ci.yml @harpertoken/devops
+/.circleci/ @harpertoken/devops

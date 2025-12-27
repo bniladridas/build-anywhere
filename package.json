@@ -1,0 +1,14 @@
+{
+  "name": "build-anywhere-example",
+  "version": "1.0.0",
+  "description": "Example project for CI-agnostic pipeline",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -e \"console.log(require('./index.js').message)\" | grep -q 'build-anywhere' && echo 'Tests passed'",
+    "build": "echo \"Building project...\" && exit 0",
+    "lint": "echo \"Linting code...\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

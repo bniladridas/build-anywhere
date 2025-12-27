@@ -1,0 +1,29 @@
+---
+name: License Scan
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  scancode:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Scancode
+      run: |
+        pip install scancode-toolkit
+
+    - name: Run Scancode
+      run: |
+        scancode --license --csv scancode-results.csv .
+
+    - name: Upload results
+      uses: actions/upload-artifact@v4
+      with:
+        name: scancode-results
+        path: scancode-results.csv
